@@ -1,0 +1,20 @@
+# CONTAINERIZE AND MANAGE MONGO AND SERVER AS WELL
+version: '3.0' #docker-compose version
+
+# Define the services/containers to be run
+services:
+
+  app: # name of first service
+    restart: on-failure:3 # on failer or app crash restart the container
+    build: . #directory of dockerfile for client
+    ports: 
+      - "5001" #port mapping
+    links:
+      - mongo #link the db with node server
+
+  mongo: # name of third service
+    image: mongo # using mongo official image
+    ports: 
+      - "27017:27017" # port mapping
+    volumes:
+      - /var/lib/docker/volumes/mongo/todos:/data/db #Volume for data persistence
