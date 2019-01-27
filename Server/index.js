@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 const app = express();
 const todoRouter = require("./Routes/todo");
 const port = process.env.PORT || 5001;
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
+app.use(cors())
 app.use("/todos", todoRouter);
 
 app.listen(port, () => {

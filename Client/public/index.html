@@ -91,16 +91,4 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"
   ></script>
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("sw.js")
-        .then(function() {
-          console.log("Service Worker Registered");
-        })
-        .catch(err => {
-          console.log("Unable to register serivce worker", err);
-        });
-    }
-  </script>
 </html>

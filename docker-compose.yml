@@ -1,0 +1,28 @@
+# CONTAINERIZE TODO MERN STACK APPLICATION
+version: '3.0' #docker-compose version
+
+# Define the services/containers to be run
+services:
+
+  client:
+    restart: on-failure:3 # on failer or app crash restart the container
+    build: Client #directory of dockerfile for client
+    ports: 
+      - "80" #port mapping
+    links:
+      - server #link the client and node server
+  
+  server: # name of first service
+    restart: on-failure:3 # on failer or app crash restart the container
+    build: Server #directory of dockerfile for client
+    ports: 
+      - "5000:5001" #port mapping
+    links:
+      - mongo #link the db with node server
+
+  mongo: # name of third service
+    image: mongo # using mongo official image
+    ports: 
+      - "27017:27017" # port mapping
+    volumes:
+      - /var/lib/docker/volumes/mongo/todos:/data/db #Volume for data persistence
