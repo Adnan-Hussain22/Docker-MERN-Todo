@@ -12,5 +12,5 @@ To containerize the entire MERN app run **docker-compose up -d** in the main dir
   - **docker build -t .** to build the docker image
   - **docker run -p 80 -d [image-name]** to build containerize your client
 
-## `Using MERN setup you have an option to easily scale and manage multi container application`
+## Using MERN setup you have an option to easily scale and manage multi container application
 
